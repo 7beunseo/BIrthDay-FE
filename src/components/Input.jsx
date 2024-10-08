@@ -1,9 +1,14 @@
 import * as I from "../styles/InputStyle";
 
-function Input({placeholder}) {
+function Input({ placeholder, value, onChange, type }) {
     return (
         <>
-            <I.Input type="text" placeholder={placeholder} />
+            <I.Input
+                type={type || "text"}
+                placeholder={placeholder}
+                value={value} // 상태 값 추가
+                onChange={onChange} // onChange 핸들러 추가
+            />
         </>
     );
 }

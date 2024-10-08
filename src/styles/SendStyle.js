@@ -45,8 +45,8 @@ export const FormInfo = styled.div`
 `
 
 export const SendButton = styled.img`
-    width: 40px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
     align-self: flex-end; 
 
         @media (max-width: 768px) { 

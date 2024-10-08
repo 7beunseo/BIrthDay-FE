@@ -1,108 +1,59 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import * as C from "../styles/ContentStyle";
 import trashImage from "../img/trash.png";
-
 import Modal from "./Modal";
+import { fetchPosts, deletePost } from "../../api/api"; // API 함수 가져오기
 
-function Content() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+function Content({ posts, setPosts }) { // posts와 setPosts를 props로 받음
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [selectedPostId, setSelectedPostId] = useState(null); // 선택한 게시물 ID
 
-  const handleDelete = async () => {
-    // api 삭제 연동
-    closeModal();
-  };
+    const openModal = (postId) => {
+        setSelectedPostId(postId); // 선택한 게시물 ID 설정
+        setIsModalOpen(true);
+    };
 
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
+    const closeModal = () => {
+        setIsModalOpen(false);
+        setSelectedPostId(null); // 선택한 게시물 ID 초기화
+    };
 
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
+    const handleDelete = async (postId, password) => {
+        try {
+            await deletePost(postId, password); // 삭제 요청
+            console.log(`Post with ID ${postId} deleted`); // 삭제 성공 메시지
 
-  return (
-    <>
-      <C.ContentContainer>
-        
-        <C.Content>
-            <C.Id>1</C.Id>
-            <C.ContentBox>
-            <C.TopMessage>
-                
-                <C.Message>content</C.Message>
-                <C.Trash src={trashImage} alt="trash" onClick={() => openModal()} />
-            </C.TopMessage>
-            <C.ButtonMessage>
-                <C.From>From. 금금서</C.From>
-                <C.CreatedAt>2024년 10월 8일</C.CreatedAt>
-            </C.ButtonMessage>
-          </C.ContentBox>
-        </C.Content>
+            // 게시물 목록 재정비
+            const updatedPosts = await fetchPosts(); // 게시물 다시 가져오기
+            setPosts(updatedPosts); // 상태 업데이트
+            closeModal(); // 모달 닫기
+        } catch (error) {
+            console.error("Error deleting post:", error);
+        }
+    };
 
-        <C.Content>
-            <C.Id>1</C.Id>
-            <C.ContentBox>
-            <C.TopMessage>
-                
-                <C.Message>최고로긴문자메세지최고로긴문자메세지최고로긴문자메세지최고로긴문자메세지최고로긴문자메세지최고로긴문자메세지최고로긴문자메세지최고로긴문자메세지최고로긴문자메세지최고로긴문자메세지최고로긴문자메세지최고로긴문자메세지최고로긴문자메세지</C.Message>
-                <C.Trash src={trashImage} alt="trash" onClick={() => openModal()} />
-            </C.TopMessage>
-            <C.ButtonMessage>
-                <C.From>From. 금금서</C.From>
-                <C.CreatedAt>2024년 10월 8일</C.CreatedAt>
-            </C.ButtonMessage>
-          </C.ContentBox>
-        </C.Content>
-
-        <C.Content>
-            <C.Id>1</C.Id>
-            <C.ContentBox>
-            <C.TopMessage>
-                
-                <C.Message>content</C.Message>
-                <C.Trash src={trashImage} alt="trash" onClick={() => openModal()} />
-            </C.TopMessage>
-            <C.ButtonMessage>
-                <C.From>From. 금금서</C.From>
-                <C.CreatedAt>2024년 10월 8일</C.CreatedAt>
-            </C.ButtonMessage>
-          </C.ContentBox>
-        </C.Content>
-
-        <C.Content>
-            <C.Id>1</C.Id>
-            <C.ContentBox>
-            <C.TopMessage>
-                
-                <C.Message>content</C.Message>
-                <C.Trash src={trashImage} alt="trash" onClick={() => openModal()} />
-            </C.TopMessage>
-            <C.ButtonMessage>
-                <C.From>From. 금금서</C.From>
-                <C.CreatedAt>2024년 10월 8일</C.CreatedAt>
-            </C.ButtonMessage>
-          </C.ContentBox>
-        </C.Content>
-
-        <C.Content>
-            <C.Id>1</C.Id>
-            <C.ContentBox>
-            <C.TopMessage>
-                
-                <C.Message>content</C.Message>
-                <C.Trash src={trashImage} alt="trash" onClick={() => openModal()} />
-            </C.TopMessage>
-            <C.ButtonMessage>
-                <C.From>From. 금금서</C.From>
-                <C.CreatedAt>2024년 10월 8일</C.CreatedAt>
-            </C.ButtonMessage>
-          </C.ContentBox>
-        </C.Content>
-
-      </C.ContentContainer>
-      {isModalOpen && <Modal onClose={closeModal} onDelete={handleDelete} />}
-    </>
-  );
+    return (
+        <>
+            <C.ContentContainer>
+                {posts.map(post => (
+                    <C.Content key={post.id}>
+                        <C.Id>{post.id}</C.Id>
+                        <C.ContentBox>
+                            <C.TopMessage>
+                                <C.Message>{post.content}</C.Message>
+                                <C.Trash src={trashImage} alt="trash" onClick={() => openModal(post.id)} />
+                            </C.TopMessage>
+                            <C.ButtonMessage>
+                                <C.From>From. {post.writer}</C.From>
+                                <C.CreatedAt>{post.createdAt.toString()}</C.CreatedAt>
+                            </C.ButtonMessage>
+                        </C.ContentBox>
+                    </C.Content>
+                ))}
+            </C.ContentContainer>
+            {isModalOpen && <Modal onClose={closeModal} onDelete={handleDelete} postId={selectedPostId} />} {/* 선택한 게시물 ID를 모달에 전달 */}
+        </>
+    );
 }
 
 export default Content;
