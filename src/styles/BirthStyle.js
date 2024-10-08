@@ -21,3 +21,18 @@ export const BirthItem = styled.div`
         margin: 0 auto;
     }
 `;
+
+export const BirthTitle = styled.div`
+    padding: 20px 0px;
+    margin-top: 20px;
+    font-size: 30px;
+    text-align: center;
+
+    span {
+        font-weight: bold;
+    }
+
+    @media (max-width: 768px) { 
+        font-size: 20px;
+    }
+`

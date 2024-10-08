@@ -9,6 +9,7 @@ function Birth() {
     <>
       <B.Birth>
         <B.BirthItem>
+          <B.BirthTitle><span>서진영</span>님의<br></br>🎂생일을 축하드립니다🎂</B.BirthTitle>
         <Picture />
         </B.BirthItem>
         <B.BirthItem>
