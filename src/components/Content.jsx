@@ -32,24 +32,26 @@ function Content({ posts, setPosts }) {
         }
     };
 
-// 날짜 포맷팅 함수
-const formatDate = (dateString) => {
-  const date = new Date(dateString); // Date 객체 생성
-
-  // UTC 시간을 한국 시간으로 변환 (9시간 추가)
-  const localDate = new Date(date.getTime() + 9 * 60 * 60 * 1000);
-
-  const options = {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-      hour: "numeric",
-      minute: "numeric",
-      hour12: false, // 24시간 형식
-  };
-  const formattedDate = new Intl.DateTimeFormat("ko-KR", options).format(localDate); // 포맷팅
-  return formattedDate.replace(" ", "일 "); // "2024년 10월 8일 15시 4분"에서 "2024년 10월 8일 몇 시" 형태로 변경
-};
+    const formatDate = (dateString) => {
+        const date = new Date(dateString); // Date 객체 생성
+      
+        // UTC 시간을 한국 시간으로 변환 (9시간 추가)
+        const localDate = new Date(date.getTime() + 9 * 60 * 60 * 1000);
+      
+        const options = {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+          hour: "numeric",
+          minute: "numeric",
+          hour12: false, // 24시간 형식
+        };
+      
+        const formattedDate = new Intl.DateTimeFormat("ko-KR", options).format(localDate); // 포맷팅
+        
+        // "2024년 10월 8일 15시 4분"에서 "2024년 10월 8일 몇 시" 형태로 변경
+        return formattedDate.replace(/(\d{4}년 \d{1,2}월 \d{1,2}일) \d{1,2}시 \d{1,2}분/, "$1 몇 시");
+      };
 
     return (
         <>
