@@ -1,13 +1,14 @@
 import * as S from "../styles/SendStyle";
 import Input from "./Input";
 import sendButton from "../img/sendButton.png"
+import TextArea from "./TextArea";
 
 function Send() {
     return (
         <S.Send>
             <S.InputBox>
                 <S.From>
-                    <Input />
+                    <TextArea />
                 </S.From>
             
                 <S.From>
