@@ -1,34 +1,33 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import * as C from "../styles/ContentStyle";
 import trashImage from "../img/trash.png";
-import Modal from "./Modal";
 import { fetchPosts, deletePost } from "../../api/api"; // API 함수 가져오기
 
-function Content({ posts, setPosts }) { // posts와 setPosts를 props로 받음
-    const [isModalOpen, setIsModalOpen] = useState(false);
+function Content({ posts, setPosts }) {
     const [selectedPostId, setSelectedPostId] = useState(null); // 선택한 게시물 ID
 
-    const openModal = (postId) => {
-        setSelectedPostId(postId); // 선택한 게시물 ID 설정
-        setIsModalOpen(true);
-    };
+    const handleDelete = async (postId) => {
+        const password = prompt("삭제를 위해 비밀번호를 입력하세요:"); // 비밀번호 입력 요청
 
-    const closeModal = () => {
-        setIsModalOpen(false);
-        setSelectedPostId(null); // 선택한 게시물 ID 초기화
-    };
+        if (password) {
+            try {
+                // 백엔드에 DELETE 요청 보내기
+                await deletePost(postId, password); // 삭제 요청
+                console.log(`Post with ID ${postId} deleted`); // 삭제 성공 메시지
 
-    const handleDelete = async (postId, password) => {
-        try {
-            await deletePost(postId, password); // 삭제 요청
-            console.log(`Post with ID ${postId} deleted`); // 삭제 성공 메시지
+                // 게시물 목록 재정비
+                const updatedPosts = posts.filter(post => post.id !== postId);
+                setPosts(updatedPosts); // 상태 업데이트
 
-            // 게시물 목록 재정비
-            const updatedPosts = await fetchPosts(); // 게시물 다시 가져오기
-            setPosts(updatedPosts); // 상태 업데이트
-            closeModal(); // 모달 닫기
-        } catch (error) {
-            console.error("Error deleting post:", error);
+                // 페이지 새로 고침
+                window.location.reload(); // 페이지 새로 고침
+            } catch (error) {
+                console.error("Error deleting post:", error);
+                window.location.reload(); // 페이지 새로 고침
+
+            }
+        } else {
+            console.log("비밀번호가 입력되지 않았습니다.");
         }
     };
 
@@ -41,7 +40,7 @@ function Content({ posts, setPosts }) { // posts와 setPosts를 props로 받음
                         <C.ContentBox>
                             <C.TopMessage>
                                 <C.Message>{post.content}</C.Message>
-                                <C.Trash src={trashImage} alt="trash" onClick={() => openModal(post.id)} />
+                                <C.Trash src={trashImage} alt="trash" onClick={() => handleDelete(post.id)} />
                             </C.TopMessage>
                             <C.ButtonMessage>
                                 <C.From>From. {post.writer}</C.From>
@@ -51,7 +50,6 @@ function Content({ posts, setPosts }) { // posts와 setPosts를 props로 받음
                     </C.Content>
                 ))}
             </C.ContentContainer>
-            {isModalOpen && <Modal onClose={closeModal} onDelete={handleDelete} postId={selectedPostId} />} {/* 선택한 게시물 ID를 모달에 전달 */}
         </>
     );
 }
