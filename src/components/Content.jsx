@@ -22,68 +22,84 @@ function Content() {
 
   return (
     <>
-      <C.ContentBox>
+      <C.ContentContainer>
+        
         <C.Content>
-          <C.TopMessage>
             <C.Id>1</C.Id>
-            <C.Message>content</C.Message>
-            <C.Trash src={trashImage} alt="trash" onClick={() => openModal()} />
-          </C.TopMessage>
-          <C.ButtonMessage>
-            <C.CreatedAt>2024년 10월 8일</C.CreatedAt>
-          </C.ButtonMessage>
+            <C.ContentBox>
+            <C.TopMessage>
+                
+                <C.Message>content</C.Message>
+                <C.Trash src={trashImage} alt="trash" onClick={() => openModal()} />
+            </C.TopMessage>
+            <C.ButtonMessage>
+                <C.From>From. 금금서</C.From>
+                <C.CreatedAt>2024년 10월 8일</C.CreatedAt>
+            </C.ButtonMessage>
+          </C.ContentBox>
         </C.Content>
 
         <C.Content>
-          <C.TopMessage>
             <C.Id>1</C.Id>
-            <C.Message>content</C.Message>
-            <C.Trash src={trashImage} alt="trash" onClick={() => openModal()} />
-          </C.TopMessage>
-          <C.ButtonMessage>
-            <C.CreatedAt>2024년 10월 8일</C.CreatedAt>
-          </C.ButtonMessage>
+            <C.ContentBox>
+            <C.TopMessage>
+                
+                <C.Message>최고로긴문자메세지최고로긴문자메세지최고로긴문자메세지최고로긴문자메세지최고로긴문자메세지최고로긴문자메세지최고로긴문자메세지최고로긴문자메세지최고로긴문자메세지최고로긴문자메세지최고로긴문자메세지최고로긴문자메세지최고로긴문자메세지</C.Message>
+                <C.Trash src={trashImage} alt="trash" onClick={() => openModal()} />
+            </C.TopMessage>
+            <C.ButtonMessage>
+                <C.From>From. 금금서</C.From>
+                <C.CreatedAt>2024년 10월 8일</C.CreatedAt>
+            </C.ButtonMessage>
+          </C.ContentBox>
         </C.Content>
 
         <C.Content>
-          <C.TopMessage>
             <C.Id>1</C.Id>
-            <C.Message>
-              나는야세상에서제일긴문장나는야세상에서제일긴문장나는야세상에서제일긴문장나는야세상에서제일긴문장나는야세상에서제일긴문장나는야세상에서제일긴문장나는야세상에서제일긴문장나는야야양야야야야
-            </C.Message>
-            <C.Trash src={trashImage} alt="trash" onClick={() => openModal()} />
-          </C.TopMessage>
-          <C.ButtonMessage>
-            <C.CreatedAt>2024년 10월 8일</C.CreatedAt>
-          </C.ButtonMessage>
+            <C.ContentBox>
+            <C.TopMessage>
+                
+                <C.Message>content</C.Message>
+                <C.Trash src={trashImage} alt="trash" onClick={() => openModal()} />
+            </C.TopMessage>
+            <C.ButtonMessage>
+                <C.From>From. 금금서</C.From>
+                <C.CreatedAt>2024년 10월 8일</C.CreatedAt>
+            </C.ButtonMessage>
+          </C.ContentBox>
         </C.Content>
 
         <C.Content>
-          <C.TopMessage>
             <C.Id>1</C.Id>
-            <C.Message>
-              나는야세상에서제일긴문장나는야세상에서제일긴문장나는야세상에서제일긴문장나는야세상에서제일긴문장나는야세상에서제일긴문장나는야세상에서제일긴문장나는야세상에서제일긴문장나는야야양야야야야
-            </C.Message>
-            <C.Trash src={trashImage} alt="trash" onClick={() => openModal()} />
-          </C.TopMessage>
-          <C.ButtonMessage>
-            <C.CreatedAt>2024년 10월 8일</C.CreatedAt>
-          </C.ButtonMessage>
+            <C.ContentBox>
+            <C.TopMessage>
+                
+                <C.Message>content</C.Message>
+                <C.Trash src={trashImage} alt="trash" onClick={() => openModal()} />
+            </C.TopMessage>
+            <C.ButtonMessage>
+                <C.From>From. 금금서</C.From>
+                <C.CreatedAt>2024년 10월 8일</C.CreatedAt>
+            </C.ButtonMessage>
+          </C.ContentBox>
         </C.Content>
 
         <C.Content>
-          <C.TopMessage>
             <C.Id>1</C.Id>
-            <C.Message>
-              나는야세상에서제일긴문장나는야세상에서제일긴문장나는야세상에서제일긴문장나는야세상에서제일긴문장나는야세상에서제일긴문장나는야세상에서제일긴문장나는야세상에서제일긴문장나는야야양야야야야
-            </C.Message>
-            <C.Trash src={trashImage} alt="trash" onClick={() => openModal()} />
-          </C.TopMessage>
-          <C.ButtonMessage>
-            <C.CreatedAt>2024년 10월 8일</C.CreatedAt>
-          </C.ButtonMessage>
+            <C.ContentBox>
+            <C.TopMessage>
+                
+                <C.Message>content</C.Message>
+                <C.Trash src={trashImage} alt="trash" onClick={() => openModal()} />
+            </C.TopMessage>
+            <C.ButtonMessage>
+                <C.From>From. 금금서</C.From>
+                <C.CreatedAt>2024년 10월 8일</C.CreatedAt>
+            </C.ButtonMessage>
+          </C.ContentBox>
         </C.Content>
-      </C.ContentBox>
+
+      </C.ContentContainer>
       {isModalOpen && <Modal onClose={closeModal} onDelete={handleDelete} />}
     </>
   );
