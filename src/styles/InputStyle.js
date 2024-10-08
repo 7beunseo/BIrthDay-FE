@@ -16,6 +16,11 @@ export const Input = styled.input`
     &:hover {
         background-color: #E1E1E1; 
     }
+
+    @media (max-width: 768px) { 
+        padding: 7px;
+        font-size: 15px;
+    }
 `;
 
 export const TextArea = styled.textarea`
@@ -35,5 +40,10 @@ export const TextArea = styled.textarea`
 
     &:hover {
         background-color: #E1E1E1; 
+    }
+
+    @media (max-width: 768px) { 
+        padding: 7px;
+        font-size: 15px;
     }
 `

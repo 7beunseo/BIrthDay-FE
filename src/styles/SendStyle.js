@@ -10,6 +10,10 @@ export const Send = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: flex-end; 
+
+    @media (max-width: 768px) { 
+        margin-top: 0px;
+    }
 `;
 
 export const InputBox = styled.div`
@@ -17,6 +21,10 @@ export const InputBox = styled.div`
     display: flex;
     flex-direction: column; 
     gap: 10px;
+
+    @media (max-width: 768px) { 
+        font-size: 15px;
+    }
 `;
 
 export const From = styled.div`
@@ -34,4 +42,9 @@ export const SendButton = styled.img`
     width: 40px;
     height: 40px;
     align-self: flex-end; 
+
+        @media (max-width: 768px) { 
+        width: 30px;
+        height: 30px;
+    }
 `;

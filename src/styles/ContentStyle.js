@@ -10,6 +10,10 @@ export const Content = styled.div`
     background-color: #C6E1FF;
     padding: 20px;
     border-radius: 20px;
+
+    @media (max-width: 768px) { 
+        padding: 15px;
+    }
 `;
 
 export const TopMessage = styled.div`
@@ -32,15 +36,23 @@ export const Trash = styled.img`
 
 export const Message = styled.div`
     flex: 1; 
-    white-space: normal; /* 줄바꿈을 허용 */
-    overflow-wrap: break-word; /* 긴 단어를 줄바꿈 */
+    white-space: normal;
+    overflow-wrap: break-word; 
     word-wrap: break-word; 
+
+    @media (max-width: 768px) { 
+        font-size: 13px;
+    }
 `;
 
 export const CreatedAt = styled.div`
     font-size: 15px;
     align-self: flex-end; 
     text-align: right; 
+
+    @media (max-width: 768px) { 
+        font-size: 12px;
+    }
 `;
 
 export const Id = styled.div`
