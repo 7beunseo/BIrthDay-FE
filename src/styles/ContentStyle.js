@@ -4,7 +4,7 @@ export const ContentContainer = styled.div`
     display: flex;
     flex-direction: column; 
     margin-top: 20px;
-    gap: 10px;
+    gap: 20px;
 `
 export const Content = styled.div`
     background-color: #C6E1FF;

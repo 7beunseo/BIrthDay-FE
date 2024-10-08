@@ -56,7 +56,7 @@ const formatDate = (dateString) => {
             <C.ContentContainer>
                 {posts.map(post => (
                     <C.Content key={post.id}>
-                        <C.Id>{post.id}</C.Id>
+                        <C.Id>🐶</C.Id>
                         <C.ContentBox>
                             <C.TopMessage>
                                 <C.Message>{post.content}</C.Message>
