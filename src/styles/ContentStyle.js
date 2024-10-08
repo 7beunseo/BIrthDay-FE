@@ -20,7 +20,14 @@ export const TopMessage = styled.div`
 `
 
 export const ButtonMessage = styled.div`
-
+`
+export const Trash = styled.img`
+    width: 13px;
+    height: 16px;
+    margin-bottom: 10px;
+        margin-left: 6px;
+    display: block; 
+    cursor: pointer;
 `
 
 export const Message = styled.div`
@@ -31,7 +38,7 @@ export const Message = styled.div`
 `;
 
 export const CreatedAt = styled.div`
-    font-size: 10px;
+    font-size: 15px;
     align-self: flex-end; 
     text-align: right; 
 `;
