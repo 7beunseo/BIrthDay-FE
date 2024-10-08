@@ -14,13 +14,21 @@ export const Send = styled.div`
 
 export const InputBox = styled.div`
     width: 80%;
+    display: flex;
+    flex-direction: column; 
+    gap: 10px;
 `;
 
 export const From = styled.div`
-    margin-top: 20px;
     display: flex;
-    gap: 20px;
+    font-weight: bold; 
+    align-items: center; 
 `;
+
+export const FormInfo = styled.div`
+    width: 80px;
+    margin-right: 30px;
+`
 
 export const SendButton = styled.img`
     width: 40px;

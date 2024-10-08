@@ -6,9 +6,18 @@ function Send() {
     return (
         <S.Send>
             <S.InputBox>
-                <Input />
                 <S.From>
-                    From. <Input />
+                    <Input />
+                </S.From>
+            
+                <S.From>
+                    <S.FormInfo>From.</S.FormInfo>
+                    <Input />
+                </S.From>
+
+                <S.From>
+                <S.FormInfo>PW</S.FormInfo>
+                <Input />
                 </S.From>
             </S.InputBox>
 
