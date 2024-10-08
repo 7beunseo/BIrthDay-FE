@@ -1,12 +1,18 @@
 import styled from "styled-components";
 
-export const Send = styled.div`
+export const SendContainer = styled.div`
     margin-top: 20px;
     box-shadow: 
         -1px 1px 5px rgba(128, 128, 128, 0.1), 
         5px 5px 10px rgba(128, 128, 128, 0.3); 
     padding: 20px;
     border-radius: 10px; 
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+`
+export const Send = styled.div`
+
     display: flex;
     justify-content: space-between;
     align-items: flex-end; 
@@ -31,11 +37,11 @@ export const From = styled.div`
     display: flex;
     font-weight: bold; 
     align-items: center; 
+    gap: 10px;
 `;
 
 export const FormInfo = styled.div`
-    width: 80px;
-    margin-right: 30px;
+    width: 70px;
 `
 
 export const SendButton = styled.img`

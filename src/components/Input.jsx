@@ -1,9 +1,9 @@
 import * as I from "../styles/InputStyle";
 
-function Input() {
+function Input({placeholder}) {
     return (
         <>
-            <I.Input type="text" />
+            <I.Input type="text" placeholder={placeholder} />
         </>
     );
 }

@@ -1,9 +1,9 @@
 import * as I from "../styles/InputStyle";
 
-function TextArea() {
+function TextArea({placeholder}) {
     return (
         <>
-            <I.TextArea type="text" />
+            <I.TextArea type="text" placeholder={placeholder}/>
         </>
     );
 }
