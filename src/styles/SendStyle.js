@@ -49,8 +49,16 @@ export const SendButton = styled.img`
     height: 35px;
     align-self: flex-end; 
 
-        @media (max-width: 768px) { 
+    @media (max-width: 768px) { 
         width: 30px;
         height: 30px;
     }
+`;
+
+export const SendButtonContainer = styled.button`
+    display: flex; /* Flexbox 사용 */
+    align-items: flex-end; /* 내용 아래쪽 정렬 */
+    margin: 0px;
+    padding: 0px;
+    height: 100%; /* 필요에 따라 높이 조정 */
 `;

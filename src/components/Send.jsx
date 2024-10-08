@@ -60,7 +60,7 @@ function Send({ fetchPosts }) { // fetchPosts를 props로 받음
 
                 <S.Send>
                     <S.InputBox>
-                        <S.From style={{ marginBottom: "10px" }} >
+                        <S.From style={{ marginBottom: "0px" }} >
                             <S.FormInfo>PW</S.FormInfo>
                             <Input  
                                 placeholder={"비밀번호를 입력해주세요"} 
@@ -71,9 +71,9 @@ function Send({ fetchPosts }) { // fetchPosts를 props로 받음
                         </S.From>
                     </S.InputBox>
 
-                    <button type="submit" style={{ border: "none", background: "none", padding: 0 }}>
+                    <S.SendButtonContainer type="submit" style={{ border: "none", background: "none", padding: 0 }}>
                         <S.SendButton src={sendButton} alt="SendButton" />
-                    </button>
+                    </S.SendButtonContainer >
                 </S.Send>
 
                 {error && <p style={{ color: 'red' }}>{error}</p>} {/* 에러 메시지 출력 */}
